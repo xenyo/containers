@@ -3,5 +3,7 @@ services:
     image: xenyo/ubuntu
     build: .
     hostname: ubuntu
+    volumes:
+      - ~/.ssh:/tmp/.ssh:ro
     env_file:
       - .env

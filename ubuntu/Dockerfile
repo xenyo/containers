@@ -31,6 +31,10 @@ RUN apt-get update; \
 COPY supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ENTRYPOINT [ "sudo", "supervisord" ]
 
+# Set up dotssh
+COPY dotssh/dotssh.sh /dotssh.sh
+COPY supervisor/dotssh.conf /etc/supervisor/conf.d/dotssh.conf
+
 # Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
   && usermod -a -G sudo ubuntu \
