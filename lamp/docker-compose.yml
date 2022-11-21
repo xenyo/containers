@@ -1,0 +1,14 @@
+services:
+  lamp:
+    image: xenyo/lamp
+    build: .
+    hostname: lamp
+    ports:
+      - 80:80
+    volumes:
+      - www:/var/www
+    env_file:
+      - .env
+
+volumes:
+  www:

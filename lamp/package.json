@@ -1,0 +1,12 @@
+{
+  "name": "lamp",
+  "private": "true",
+  "scripts": {
+    "watch": "nodemon --watch Dockerfile --exec \"pnpm build\"",
+    "build": "docker compose build --progress=plain",
+    "start": "docker compose down && docker compose up -d && docker compose exec lamp bash"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
