@@ -1,0 +1,8 @@
+services:
+  ubuntu:
+    image: xenyo/ubuntu
+    build: .
+    hostname: ubuntu
+    tty: true
+    env_file:
+      - .env
