@@ -28,7 +28,7 @@ RUN apt-get update; \
     zip
 
 # Set up supervisord
-COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ENTRYPOINT [ "sudo", "supervisord" ]
 
 # Create ubuntu user
