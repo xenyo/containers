@@ -10,10 +10,9 @@ RUN apt-get update; \
     curl \
     git \
     less \
+    memcached \
     nano \
     openssh-client \
-    openssh-server \
-    openssh-sftp-server \
     patch \
     python3 \
     rename \
@@ -28,7 +27,11 @@ RUN apt-get update; \
     wget \
     zip
 
-# Create user
+# Set up supervisord
+COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+ENTRYPOINT [ "sudo", "supervisord" ]
+
+# Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
   && usermod -a -G sudo ubuntu \
   && echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
