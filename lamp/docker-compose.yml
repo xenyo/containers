@@ -1,14 +1,26 @@
 services:
-  lamp:
+  web:
     image: xenyo/lamp
     build: .
     hostname: lamp
+    restart: always
     ports:
       - 80:80
     volumes:
-      - www:/var/www
+      - ~/.ssh:/tmp/.ssh:ro
+      - web:/var/www
     env_file:
       - .env
 
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+      - MARIADB_DATABASE=drupal
+    volumes:
+      - mariadb:/var/lib/mysql
+
 volumes:
-  www:
+  web:
+  mariadb:

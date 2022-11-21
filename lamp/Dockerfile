@@ -5,7 +5,19 @@ COPY supervisor/php8.1-fpm.conf /etc/supervisor/conf.d/php8.1-fpm.conf
 RUN sudo add-apt-repository ppa:ondrej/php -y \
   && sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+    php8.1 \
+    php8.1-bcmath \
+    php8.1-common \
+    php8.1-curl \
     php8.1-fpm \
+    php8.1-gd \
+    php8.1-mbstring \
+    php8.1-memcached \
+    php8.1-mysql \
+    php8.1-opcache \
+    php8.1-readline \
+    php8.1-xdebug \
+    php8.1-xml \
   && sudo service php8.1-fpm start
 
 # Install Apache
@@ -29,3 +41,19 @@ RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
   && sudo usermod -a -G www-data ubuntu \
   && sudo usermod -a -G ubuntu www-data \
   && sudo service apache2 start
+
+# Install MySQL client
+RUN sudo apt-get update \
+  && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+    mysql-client
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install Drush Launcher
+RUN curl -OL https://github.com/drush-ops/drush-launcher/releases/latest/download/drush.phar \
+  && chmod +x drush.phar \
+  && sudo mv drush.phar /usr/local/bin/drush
+
+# Set working directory
+WORKDIR /var/www/drupal
