@@ -5,6 +5,7 @@ RUN sudo add-apt-repository ppa:ondrej/php -y \
   && sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     php8.1 \
+    php8.1-apcu \
     php8.1-bcmath \
     php8.1-common \
     php8.1-curl \
