@@ -1,7 +1,6 @@
 FROM xenyo/ubuntu:latest
 
 # Install PHP
-COPY supervisor/php8.1-fpm.conf /etc/supervisor/conf.d/php8.1-fpm.conf
 RUN sudo add-apt-repository ppa:ondrej/php -y \
   && sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
@@ -21,10 +20,6 @@ RUN sudo add-apt-repository ppa:ondrej/php -y \
   && sudo service php8.1-fpm start
 
 # Install Apache
-EXPOSE 80
-COPY supervisor/apache2.conf /etc/supervisor/conf.d/apache2.conf
-COPY apache2/drupal.conf /etc/apache2/sites-available/drupal.conf
-COPY apache2/index.html /var/www/drupal/web/index.html
 RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
   && sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
@@ -47,13 +42,14 @@ RUN sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     mysql-client
 
+# Clean up apt cache
+RUN sudo rm -rf /var/lib/apt/lists/*
+
+# Copy supervisor config
+COPY lamp.supervisord.conf /etc/supervisord/conf.d/lamp.supervisord.conf
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install Drush Launcher
-RUN curl -OL https://github.com/drush-ops/drush-launcher/releases/latest/download/drush.phar \
-  && chmod +x drush.phar \
-  && sudo mv drush.phar /usr/local/bin/drush
-
 # Set working directory
-WORKDIR /var/www/drupal
+WORKDIR /var/www
