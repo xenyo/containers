@@ -12,7 +12,6 @@ RUN apt-get update; \
     curl \
     git \
     less \
-    memcached \
     nano \
     openssh-client \
     patch \
