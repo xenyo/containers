@@ -43,8 +43,9 @@ RUN adduser --disabled-password --gecos '' ubuntu \
 USER ubuntu
 WORKDIR /home/ubuntu
 
-# Customize prompt
-RUN echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> .bashrc
+# Extend .bashrc
+RUN echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> .bashrc \
+  && echo 'umask 0002' >> .bashrc
 
 # Install nvm, node, npm and pnpm
 ENV NVM_DIR /home/ubuntu/.nvm
