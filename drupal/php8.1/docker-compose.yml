@@ -1,0 +1,15 @@
+name: drupal-php8.1
+services:
+  drupal:
+    image: xenyo/drupal:php8.1
+    hostname: drupal
+    ports:
+      - 80:80
+    volumes:
+      - ~/.ssh:/mnt/.ssh:ro
+      - www:/var/www
+      - db:/var/lib/mysql
+
+volumes:
+  www:
+  db:
