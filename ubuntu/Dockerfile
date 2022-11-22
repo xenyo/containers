@@ -1,5 +1,8 @@
 FROM ubuntu:latest
 
+# Set timezone
+ENV TZ=Asia/Hong_Kong
+
 # Set ubuntu mirror
 RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.xtom.com.hk\/ubuntu\//' /etc/apt/sources.list
 
@@ -27,13 +30,15 @@ RUN apt-get update; \
     wget \
     zip
 
+# Clean up apt cache
+RUN rm -rf /var/lib/apt/lists/*
+
 # Set up supervisord
-COPY supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ENTRYPOINT [ "sudo", "supervisord" ]
 
-# Set up dotssh
-COPY dotssh/dotssh.sh /dotssh.sh
-COPY supervisor/dotssh.conf /etc/supervisor/conf.d/dotssh.conf
+# Add startup script
+COPY startup.sh /startup.sh
 
 # Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
@@ -47,7 +52,7 @@ RUN echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\0
 
 # Install nvm, node, npm and pnpm
 ENV NVM_DIR /home/ubuntu/.nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash \
   && . .nvm/nvm.sh \
   && nvm install --lts \
   && npm i -g npm pnpm

@@ -4,6 +4,4 @@ services:
     build: .
     hostname: ubuntu
     volumes:
-      - ~/.ssh:/tmp/.ssh:ro
-    env_file:
-      - .env
+      - ~/.ssh:/mnt/.ssh:ro
