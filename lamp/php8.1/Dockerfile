@@ -19,6 +19,9 @@ RUN sudo add-apt-repository ppa:ondrej/php -y \
     php8.1-xml \
   && sudo service php8.1-fpm start
 
+# Configure PHP
+COPY php.ini /etc/php/8.1/fpm/conf.d/30-docker.ini
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
