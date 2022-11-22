@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # Set timezone
 ENV TZ=Asia/Hong_Kong

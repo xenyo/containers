@@ -1,11 +1,12 @@
 {
-  "name": "ubuntu",
+  "name": "ubuntu-22.04",
   "private": "true",
   "scripts": {
     "watch": "nodemon --watch Dockerfile --exec \"pnpm build\"",
-    "build": "docker compose build --progress=plain",
+    "build": "docker build -t xenyo/ubuntu:22.04 -t xenyo/ubuntu --progress=plain .",
     "clean": "docker compose down -v",
-    "start": "docker compose up -d && docker compose exec ubuntu bash"
+    "start": "docker compose up -d && docker compose exec ubuntu bash",
+    "push": "docker push xenyo/ubuntu:22.04 && docker push xenyo/ubuntu"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

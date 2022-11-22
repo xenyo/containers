@@ -1,7 +1,7 @@
+name: ubuntu-22.04
 services:
   ubuntu:
-    image: xenyo/ubuntu
-    build: .
+    image: xenyo/ubuntu:22.04
     hostname: ubuntu
     volumes:
       - ~/.ssh:/mnt/.ssh:ro
