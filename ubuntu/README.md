@@ -2,7 +2,9 @@
 
 A Docker development environment based on Ubuntu.
 
-https://github.com/xenyo/containers/tree/main/ubuntu
+DockerHub: https://hub.docker.com/r/xenyo/ubuntu
+
+GitHub: https://github.com/xenyo/containers/tree/main/ubuntu
 
 ## Features
 
