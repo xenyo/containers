@@ -1,7 +1,7 @@
-name: lamp-8.1
+name: lamp-php8.1
 services:
   lamp:
-    image: xenyo/lamp:8.1
+    image: xenyo/lamp:php8.1
     hostname: lamp
     ports:
       - 80:80
