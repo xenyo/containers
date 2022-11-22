@@ -30,7 +30,6 @@ RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
     libapache2-mod-fcgid \
   && sudo a2enmod \
     proxy_fcgi \
-    rewrite \
   && sudo a2enconf php8.1-fpm \
   && sudo chown -R ubuntu:ubuntu /var/www \
   && sudo chmod -R ug+w /var/www \
