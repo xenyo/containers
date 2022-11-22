@@ -9,7 +9,6 @@ RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.xtom.com.hk\
 # Install packages
 RUN apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    build-essential \
     curl \
     git \
     less \
@@ -17,11 +16,9 @@ RUN apt-get update; \
     nano \
     openssh-client \
     patch \
-    python3 \
     rename \
     rsync \
     software-properties-common \
-    ssh-import-id \
     sudo \
     supervisor \
     tzdata \
