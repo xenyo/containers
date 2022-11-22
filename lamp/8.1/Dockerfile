@@ -1,4 +1,4 @@
-FROM xenyo/ubuntu:latest
+FROM xenyo/ubuntu:22.04
 
 # Install PHP
 RUN sudo add-apt-repository ppa:ondrej/php -y \
@@ -19,6 +19,9 @@ RUN sudo add-apt-repository ppa:ondrej/php -y \
     php8.1-xml \
   && sudo service php8.1-fpm start
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
 # Install Apache
 RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
   && sudo apt-get update \
@@ -29,27 +32,23 @@ RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
     proxy_fcgi \
     rewrite \
   && sudo a2enconf php8.1-fpm \
-  && sudo a2dissite 000-default.conf \
-  && sudo a2ensite drupal.conf \
   && sudo chown -R ubuntu:ubuntu /var/www \
   && sudo chmod -R ug+w /var/www \
   && sudo usermod -a -G www-data ubuntu \
   && sudo usermod -a -G ubuntu www-data \
   && sudo service apache2 start
 
-# Install MySQL client
+# Install MariaDB
 RUN sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
-    mysql-client
+    mariadb-server \
+  && sudo service mariadb start
 
 # Clean up apt cache
 RUN sudo rm -rf /var/lib/apt/lists/*
 
 # Copy supervisor config
-COPY lamp.supervisord.conf /etc/supervisord/conf.d/lamp.supervisord.conf
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+COPY lamp.supervisord.conf /etc/supervisor/conf.d/lamp.supervisord.conf
 
 # Set working directory
 WORKDIR /var/www
