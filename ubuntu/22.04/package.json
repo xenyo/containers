@@ -4,9 +4,9 @@
   "scripts": {
     "watch": "nodemon --watch Dockerfile --exec \"pnpm build\"",
     "build": "docker build -t xenyo/ubuntu:22.04 -t xenyo/ubuntu --progress=plain .",
-    "clean": "docker compose down -v",
+    "push": "docker push xenyo/ubuntu:22.04 && docker push xenyo/ubuntu",
     "start": "docker compose up -d && docker compose exec ubuntu bash",
-    "push": "docker push xenyo/ubuntu:22.04 && docker push xenyo/ubuntu"
+    "clean": "docker compose down -v"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
