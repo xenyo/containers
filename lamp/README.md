@@ -2,7 +2,9 @@
 
 An all-in-one Docker LAMP server for web development.
 
-# Features
+https://github.com/xenyo/containers/tree/main/lamp
+
+## Features
 
 - Based on xenyo/ubuntu
 - php-fpm with common extensions
