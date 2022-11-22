@@ -41,7 +41,8 @@ RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
 RUN sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     mariadb-server \
-  && sudo service mariadb start
+  && sudo service mariadb start \
+  && sudo mysqladmin -uroot password ''
 
 # Clean up apt cache
 RUN sudo rm -rf /var/lib/apt/lists/*
