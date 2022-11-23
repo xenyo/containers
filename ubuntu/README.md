@@ -10,7 +10,7 @@ A Docker development environment based on Ubuntu.
 - Based on ubuntu official image
 - Added limited sudo user `ubuntu`
 - Uses supervisord for process management
-- Copies .ssh from host to container
+- Copies SSH keys from host to container
 
 ## Pre-installed software
 
