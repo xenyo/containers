@@ -4,7 +4,7 @@ services:
     image: xenyo/lamp:php8.1
     hostname: lamp
     ports:
-      - 80:80
+      - ${APACHE_PORT:-80}:80
     volumes:
       - ~/.ssh:/mnt/.ssh:ro
       - www:/var/www
