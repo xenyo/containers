@@ -1,0 +1,10 @@
+{
+  "name": "containers",
+  "private": true,
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "js-yaml": "^4.1.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2"
+  }
+}

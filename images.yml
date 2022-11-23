@@ -1,0 +1,14 @@
+images:
+  - name: xenyo/lamp
+    tags: [php8.1, latest]
+    src: lamp/template
+    dest: lamp/php8.1
+    context:
+      php_version: '8.1'
+
+  - name: xenyo/lamp
+    tags: [php7.4]
+    src: lamp/template
+    dest: lamp/php7.4
+    context:
+      php_version: '7.4'
