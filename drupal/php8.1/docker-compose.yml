@@ -1,8 +1,8 @@
-name: drupal-php8.1-example
+name: drupal-php8.1
 services:
   drupal:
     image: xenyo/drupal:php8.1
-    hostname: drupal-php8.1-example
+    hostname: drupal-php8.1
     ports:
       - ${APACHE_PORT:-80}:80
     volumes:

@@ -18,8 +18,10 @@ An all-in-one Docker LAMP server for Drupal web development.
 
 Copy `docker-compose.yml` and `.env.example` to your project.
 
-To set custom environment variables, create a `.env` file based on
-`.env.example`. Make sure to add `.env` to your gitignore.
+Edit `name:` and `hostname:` in `docker-compose.yml` to suit your project.
+
+Create a `.env` file based on `.env.example` and add `.env` to your gitignore.
+Edit `.env` to set custom environment variables.
 
 ## Usage
 
