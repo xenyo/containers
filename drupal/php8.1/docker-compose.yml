@@ -2,12 +2,20 @@ name: drupal-php8.1
 services:
   drupal:
     image: xenyo/drupal:php8.1
+    depends_on:
+      - mariadb
     hostname: drupal-php8.1
     ports:
       - ${APACHE_PORT:-80}:80
     volumes:
       - ~/.ssh:/mnt/.ssh:ro
       - www:/var/www
+
+  mariadb:
+    image: mariadb:10
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
+    volumes:
       - db:/var/lib/mysql
 
 volumes:

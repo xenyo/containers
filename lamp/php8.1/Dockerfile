@@ -46,12 +46,10 @@ RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
   && sudo usermod -a -G ubuntu www-data \
   && sudo service apache2 start
 
-# Install MariaDB
+# Install MySQL client
 RUN sudo apt-get update \
   && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
-    mariadb-server \
-  && sudo service mariadb start \
-  && sudo mysqladmin -uroot password ''
+    mysql-client
 
 # Clean up apt cache
 RUN sudo rm -rf /var/lib/apt/lists/*

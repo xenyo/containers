@@ -9,7 +9,6 @@ An all-in-one Docker LAMP server for web development.
 
 - Based on xenyo/ubuntu
 - Increased PHP memory limit and upload max size
-- Empty MySQL root password
 
 # Pre-installed packages
 
@@ -17,7 +16,7 @@ An all-in-one Docker LAMP server for web development.
 - Common PHP extensions
 - Composer
 - Apache server
-- MariaDB server
+- MySQL client
 
 ## Add to an existing project
 

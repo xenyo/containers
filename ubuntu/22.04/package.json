@@ -2,7 +2,7 @@
   "name": "ubuntu-22.04",
   "private": "true",
   "scripts": {
-    "watch": "nodemon --watch Dockerfile --exec \"npm run build\"",
+    "watch": "nodemon --watch Dockerfile --exec \"npm run build && npm run push\"",
     "build": "docker build -t xenyo/ubuntu:22.04 -t xenyo/ubuntu --progress=plain .",
     "push": "docker push xenyo/ubuntu:22.04 && docker push xenyo/ubuntu"
   },
