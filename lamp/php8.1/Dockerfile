@@ -28,7 +28,8 @@ RUN sudo add-apt-repository ppa:ondrej/php -y \
 COPY php.ini /etc/php/8.1/fpm/conf.d/30-docker.ini
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer \
+  && composer config --global
 
 # Install Apache
 RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
