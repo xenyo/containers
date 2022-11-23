@@ -39,5 +39,5 @@ docker compose up -d
 Run bash:
 
 ```
-docker compose exec drupal bash
+docker compose exec lamp bash
 ```

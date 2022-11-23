@@ -40,6 +40,8 @@ COPY startup.sh /startup.sh
 RUN adduser --disabled-password --gecos '' ubuntu \
   && usermod -a -G sudo ubuntu \
   && echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
+
+# Switch to ubuntu user
 USER ubuntu
 WORKDIR /home/ubuntu
 
@@ -47,9 +49,11 @@ WORKDIR /home/ubuntu
 RUN echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> .bashrc \
   && echo 'umask 0002' >> .bashrc
 
-# Install nvm, node, npm and pnpm
+# Install Node.js
 ENV NVM_DIR /home/ubuntu/.nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash \
   && . .nvm/nvm.sh \
   && nvm install --lts \
-  && npm i -g npm pnpm
+  && npm config set -g audit false \
+  && npm config set -g fund false \
+  && npm i -g npm

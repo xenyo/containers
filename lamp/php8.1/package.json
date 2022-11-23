@@ -2,11 +2,9 @@
   "name": "lamp-php8.1",
   "private": "true",
   "scripts": {
-    "watch": "nodemon --watch Dockerfile --exec \"pnpm build\"",
+    "watch": "nodemon --watch Dockerfile --exec \"npm run build\"",
     "build": "docker build -t xenyo/lamp:php8.1 -t xenyo/lamp --progress=plain .",
-    "push": "docker push xenyo/lamp:php8.1 && docker push xenyo/lamp",
-    "start": "docker compose up -d && docker compose exec lamp bash",
-    "clean": "docker compose down -v"
+    "push": "docker push xenyo/lamp:php8.1 && docker push xenyo/lamp"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
