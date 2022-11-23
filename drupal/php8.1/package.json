@@ -4,9 +4,7 @@
   "scripts": {
     "watch": "nodemon --watch Dockerfile --exec \"pnpm build\"",
     "build": "docker build -t xenyo/drupal:php8.1 -t xenyo/drupal --progress=plain .",
-    "push": "docker push xenyo/drupal:php8.1 && docker push xenyo/drupal",
-    "start": "docker compose up -d && docker compose exec drupal bash",
-    "clean": "docker compose down -v"
+    "push": "docker push xenyo/drupal:php8.1 && docker push xenyo/drupal"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
