@@ -3,5 +3,7 @@ services:
   ubuntu:
     image: xenyo/ubuntu:22.04
     hostname: ubuntu-22.04
+    ports:
+      - ${SSH_PORT:-22}:22
     volumes:
       - ~/.ssh:/mnt/.ssh:ro

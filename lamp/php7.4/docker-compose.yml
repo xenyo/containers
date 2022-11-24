@@ -6,6 +6,7 @@ services:
       - mariadb
     hostname: lamp-php7.4
     ports:
+      - ${SSH_PORT:-22}:22
       - ${APACHE_PORT:-80}:80
     volumes:
       - ~/.ssh:/mnt/.ssh:ro

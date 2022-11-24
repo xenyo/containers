@@ -13,11 +13,11 @@ RUN apt-get update; \
     git \
     less \
     nano \
-    openssh-client \
     patch \
     rename \
     rsync \
     software-properties-common \
+    ssh \
     sudo \
     supervisor \
     tzdata \
@@ -28,6 +28,10 @@ RUN apt-get update; \
 
 # Clean up apt cache
 RUN rm -rf /var/lib/apt/lists/*
+
+# Set up sshd
+COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
+RUN service ssh start
 
 # Set up supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf

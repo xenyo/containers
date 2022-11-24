@@ -15,6 +15,7 @@ A Docker development environment based on Ubuntu.
 ## Pre-installed software
 
 - Common development tools
+- SSH server
 - Node.js
 
 ## Add to an existing project
@@ -35,4 +36,42 @@ Run bash:
 
 ```
 docker compose exec ubuntu bash
+```
+
+## Connect via SSH
+
+The container allows SSH connections to the `ubuntu` user with no password. No
+SSH keys are needed.
+
+The docker compose file will set up the container to listen for SSH connections
+on port 22 by default. Start an SSH session:
+
+```
+ssh ubuntu@localhost
+```
+
+If different port is specified in `.env`:
+
+```
+ssh ubuntu@localhost -p 2200
+```
+
+After updating the image to a new version, the connection may fail with this
+warning:
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+...
+```
+
+Add the following to your `~/.ssh/config` to skip host key checking for
+localhost:
+
+```
+NoHostAuthenticationForLocalhost yes
 ```
