@@ -43,6 +43,7 @@ RUN chmod +x /startup.sh
 
 # Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
+  && echo 'ubuntu:ubuntu' | chpasswd \
   && usermod -a -G sudo ubuntu \
   && echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ubuntu
 
