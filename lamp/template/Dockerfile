@@ -29,7 +29,7 @@ COPY php.ini /etc/php/{{php_version}}/fpm/conf.d/30-docker.ini
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer \
-  && composer config --global
+  && composer config --global use-parent-dir true
 
 # Install Apache
 RUN sudo add-apt-repository ppa:ondrej/apache2 -y \
