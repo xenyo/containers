@@ -1,4 +1,11 @@
 images:
+  - name: xenyo/ubuntu
+    tags: [22.04, latest]
+    src: ubuntu/template
+    dest: ubuntu/22.04
+    context:
+      ubuntu_version: '22.04'
+
   - name: xenyo/lamp
     tags: [php8.1, latest]
     src: lamp/template
@@ -10,5 +17,19 @@ images:
     tags: [php7.4]
     src: lamp/template
     dest: lamp/php7.4
+    context:
+      php_version: '7.4'
+
+  - name: xenyo/drupal
+    tags: [php8.1, latest]
+    src: drupal/template
+    dest: drupal/php8.1
+    context:
+      php_version: '8.1'
+
+  - name: xenyo/drupal
+    tags: [php7.4]
+    src: drupal/template
+    dest: drupal/php7.4
     context:
       php_version: '7.4'

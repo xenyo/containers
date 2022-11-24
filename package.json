@@ -1,10 +1,16 @@
 {
   "name": "containers",
   "private": true,
+  "scripts": {
+    "all": "npm run generate && npm run build && npm run push",
+    "generate": "node . generate",
+    "build": "node . build",
+    "push": "node . push"
+  },
   "dependencies": {
+    "fs-extra": "^10.1.0",
     "handlebars": "^4.7.7",
     "js-yaml": "^4.1.0",
-    "mkdirp": "^1.0.4",
-    "rimraf": "^3.0.2"
+    "walk-sync": "^3.0.0"
   }
 }

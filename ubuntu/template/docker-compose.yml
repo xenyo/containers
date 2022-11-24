@@ -1,0 +1,7 @@
+name: ubuntu-{{ubuntu_version}}
+services:
+  ubuntu:
+    image: xenyo/ubuntu:{{ubuntu_version}}
+    hostname: ubuntu-{{ubuntu_version}}
+    volumes:
+      - ~/.ssh:/mnt/.ssh:ro
