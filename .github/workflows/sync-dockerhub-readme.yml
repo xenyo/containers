@@ -13,10 +13,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Sync Ubuntu README
+      - name: Sync xenyo/ubuntu README
         uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: xenyo
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: xenyo/ubuntu
           readme: ubuntu/README.md
+
+      - name: Sync xenyo/lamp README
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: xenyo
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: xenyo/lamp
+          readme: lamp/README.md
+
+      - name: Sync xenyo/drupal README
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: xenyo
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: xenyo/drupal
+          readme: drupal/README.md
