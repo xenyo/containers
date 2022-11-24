@@ -1,0 +1,22 @@
+name: Sync README to Docker Hub
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Sync Ubuntu README
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: xenyo
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: xenyo/ubuntu
+          readme: ubuntu/README.md
