@@ -35,6 +35,7 @@ ENTRYPOINT [ "sudo", "supervisord" ]
 
 # Add startup script
 COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 # Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
