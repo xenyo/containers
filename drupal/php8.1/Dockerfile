@@ -2,7 +2,6 @@ FROM xenyo/lamp:php8.1
 
 # Set up apache
 RUN rm -r /var/www/html
-COPY --chown=ubuntu:ubuntu web /var/www/html/web
 COPY drupal.conf /etc/apache2/sites-available/drupal.conf
 RUN sudo a2enmod rewrite \
   && sudo a2dissite 000-default.conf \

@@ -40,6 +40,5 @@ docker compose exec drupal bash
 Clone your repository to `/var/www/html`:
 
 ```
-rm -rf /var/www/html
 git clone git@github.com:xenyo/my-drupal-project.git /var/www/html
 ```
