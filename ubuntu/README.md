@@ -8,14 +8,14 @@ A Docker development environment based on Ubuntu.
 ## Features
 
 - Based on ubuntu official image
-- Added limited sudo user `ubuntu`
+- Added limited sudo user `ubuntu` with umask `0002`
 - Uses supervisord for process management
 - Copies SSH keys from host to container
 
 ## Pre-installed software
 
 - Common development tools
-- SSH server
+- SSH/SFTP server
 - Node.js
 
 ## Add to an existing project
