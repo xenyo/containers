@@ -75,3 +75,12 @@ localhost:
 ```
 NoHostAuthenticationForLocalhost yes
 ```
+
+## Connect using WinSCP
+
+WinSCP does not support empty password authentication. Use the following
+to connect using WinSCP:
+
+| Host | Username | Password |
+| --- | --- | --- |
+| localhost | ubuntu | ubuntu |
