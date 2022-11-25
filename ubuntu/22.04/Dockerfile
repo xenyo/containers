@@ -9,6 +9,7 @@ RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.xtom.com.hk\
 # Install packages
 RUN apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    cron \
     curl \
     git \
     less \
@@ -29,17 +30,19 @@ RUN apt-get update; \
 # Clean up apt cache
 RUN rm -rf /var/lib/apt/lists/*
 
-# Set up sshd
-COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
-RUN service ssh start
-
 # Set up supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ENTRYPOINT [ "sudo", "supervisord" ]
 
-# Add startup script
+# Set up sshd
+COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
+
+# Set up startup script
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
+
+# Start services
+RUN service ssh start \
+  && service cron start
 
 # Create ubuntu user
 RUN adduser --disabled-password --gecos '' ubuntu \
@@ -63,3 +66,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | ba
   && npm config set -g audit false \
   && npm config set -g fund false \
   && npm i -g npm
+
+# Set entrypoint
+ENTRYPOINT [ "sudo", "supervisord" ]

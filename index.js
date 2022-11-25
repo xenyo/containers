@@ -11,8 +11,7 @@ const command = process.argv[2];
 if (command === 'generate') {
   images.forEach(image => {
     const { src, dest, context } = image;
-    fs.removeSync(dest);
-    fs.mkdirpSync(dest);
+    fs.emptyDirSync(dest);
     walkSync(src, { directories: false }).forEach(file => {
       const template = handlebars.compile(fs.readFileSync(`${src}/${file}`, 'utf8'));
       const output = template(context);
