@@ -1,2 +1,2 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-* * * * * ubuntu drush --root=/var/www/html --quiet cron
+0 * * * * ubuntu drush --root=/var/www/html --quiet cron
