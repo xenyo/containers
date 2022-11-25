@@ -12,5 +12,8 @@ RUN curl -OL https://github.com/drush-ops/drush-launcher/releases/latest/downloa
   && chmod +x drush.phar \
   && sudo mv drush.phar /usr/local/bin/drush
 
+# Set up Drupal cron job
+COPY drush-cron /etc/cron.d/drush-cron
+
 # Set working directory
 WORKDIR /var/www/html
