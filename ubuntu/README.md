@@ -16,6 +16,7 @@ A Docker development environment based on Ubuntu.
 
 - Common development tools
 - SSH/SFTP server
+- Cron
 - Node.js
 
 ## Add to an existing project
