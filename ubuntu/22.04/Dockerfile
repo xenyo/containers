@@ -13,6 +13,7 @@ RUN apt-get update; \
     curl \
     git \
     less \
+    locales \
     nano \
     patch \
     rename \
@@ -29,6 +30,12 @@ RUN apt-get update; \
 
 # Clean up apt cache
 RUN rm -rf /var/lib/apt/lists/*
+
+# Set up locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Set up supervisord
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
