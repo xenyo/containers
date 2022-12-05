@@ -74,5 +74,10 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | ba
   && npm config set -g fund false \
   && npm i -g npm
 
+# Set up git
+RUN git config --global init.defaultBranch main
+RUN git config --global credential.helper store
+RUN git config --global pull.rebase false
+
 # Set entrypoint
 ENTRYPOINT [ "sudo", "supervisord" ]
